@@ -47,8 +47,11 @@ public class DeliveryRobot {
         return count;
     }
 
-    public static synchronized void updateFrequency(int frequency) {
-        sizeToFreq.put(frequency, sizeToFreq.getOrDefault(frequency, 0) + 1);
+    public static void updateFrequency(int frequency) {
+        synchronized (sizeToFreq){
+            sizeToFreq.put(frequency, sizeToFreq.getOrDefault(frequency, 0) + 1);
+        }
+
     }
 
     public static void printResults() {
